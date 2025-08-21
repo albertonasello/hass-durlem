@@ -1,15 +1,20 @@
+# custom_components/durlem/coordinator.py
 from __future__ import annotations
-from datetime import timedelta
+
 import logging
+from datetime import timedelta
+
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
+
 from .api import DurlemClient
 from .const import DOMAIN, DEFAULT_SCAN_INTERVAL
 
 _LOGGER = logging.getLogger(__name__)
 
+
 class DurlemCoordinator(DataUpdateCoordinator[dict]):
-    def __init__(self, hass: HomeAssistant, client: DurlemClient):
+    def __init__(self, hass: HomeAssistant, client: DurlemClient) -> None:
         super().__init__(
             hass,
             logger=_LOGGER,
@@ -28,5 +33,9 @@ class DurlemCoordinator(DataUpdateCoordinator[dict]):
                 raise UpdateFailed("API OK mais pas de clé 'softener' dans la réponse")
             return data
         except Exception as e:
+            prev = self.data
+            if prev:
+                _LOGGER.warning("Durlem update failed (using cached data): %s", e)
+                return prev  # garde les capteurs disponibles avec la dernière valeur
             _LOGGER.exception("Durlem update failed: %s", e)
             raise UpdateFailed(str(e)) from e

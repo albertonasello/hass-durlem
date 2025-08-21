@@ -13,11 +13,15 @@ Elle utilise l’API cloud officielle (`connect.durlem.be`) afin de récupérer 
 ### Fonctionnalités
 - Récupération automatique de l’état de l’adoucisseur toutes les 5 minutes
 - Capteurs disponibles :
-  - **Durlem Remaining Capacity** (% de capacité restante)
-  - **Durlem Low Salt** (alerte manque de sel : vrai/faux)
-  - **Durlem Working** (en régénération : vrai/faux)
-  - **Durlem Last Regeneration** (date/heure de la dernière régénération)
-  - **Durlem Next Regeneration** (date/heure de la prochaine régénération)
+  -- **Durlem Remaining Capacity** (% de capacité restante)
+  -- **Durlem Low Salt** (alerte manque de sel : vrai/faux)
+  -- **Durlem Working** (en régénération : vrai/faux)
+  -- **Durlem Last Regeneration** (date/heure de la dernière régénération)
+  -- **Durlem Next Regeneration** (date/heure de la prochaine régénération)
+  -- **Durlem Regeneration Count** (nombre de régénérations depuis le reset)
+  -- **Durlem Hardness** (dureté de l’eau en °f)
+  -- **Durlem Installation Date** (date d’installation de l’appareil)
+  
 - Attributs supplémentaires : dureté, fuite détectée, état de service, batterie faible, etc.
 
 ### Installation
@@ -44,11 +48,16 @@ It uses the official cloud API (`connect.durlem.be`) to fetch device information
 ### Features
 - Automatic update every 5 minutes
 - Available sensors:
-  - **Durlem Remaining Capacity** (% of remaining softening capacity)
-  - **Durlem Low Salt** (salt alarm: true/false)
+  - **Durlem Remaining Capacity** (% of remaining capacity)
+  - **Durlem Low Salt** (low salt alert: true/false)
   - **Durlem Working** (currently regenerating: true/false)
-  - **Durlem Last Regeneration** (date/time of the last regeneration)
-  - **Durlem Next Regeneration** (date/time of the next regeneration)
+  - **Durlem Last Regeneration** (timestamp of last regeneration)
+  - **Durlem Next Regeneration** (timestamp of next regeneration)
+  - **Durlem Regeneration Count** (number of regenerations since reset)
+  - **Durlem Hardness** (water hardness in °f)
+  - **Durlem Installation Date** (installation timestamp)
+
+
 - Extra attributes: hardness, leak detection, service mode, low battery, etc.
 
 ### Installation
